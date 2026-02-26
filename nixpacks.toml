@@ -1,8 +1,4 @@
-[phases.setup]
-nixPkgs = ["python311", "python311Packages.pip"]
-
-[phases.install]
-cmds = ["pip install --no-cache-dir -r requirements.txt"]
-
-[start]
-cmd = "python bot.py"
+python-telegram-bot[job-queue]==20.7
+APScheduler>=3.10.1,<4.0
+httpx==0.27.2
+pytz>=2024.1
