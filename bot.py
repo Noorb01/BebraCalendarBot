@@ -415,11 +415,10 @@ def main():
     app.add_handler(CallbackQueryHandler(button_handler))
 
     # Напоминания каждую пятницу в 18:00
-    job_queue = app.job_queue
-    # Запускать каждые 7 дней, начиная с ближайшей пятницы
-    job_queue.run_daily(
+    import datetime as dt
+    app.job_queue.run_daily(
         send_reminders,
-        time=__import__("datetime").time(hour=18, minute=0),
+        time=dt.time(hour=18, minute=0, tzinfo=dt.timezone.utc),
         days=(4,)  # 4 = пятница
     )
 
